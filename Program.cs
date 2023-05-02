@@ -1,16 +1,62 @@
+using System.Diagnostics;
+using dam_battleship.models;
+
 namespace dam_battleship;
 
-static class Program
+internal static class Program
 {
-    /// <summary>
-    ///  The main entry point for the application.
-    /// </summary>
+    private static Board? Board { get; set; }
+    private static List<Team> Teams { get; } = new();
+
     [STAThread]
-    static void Main()
+    private static void Main()
     {
-        // To customize application configuration such as set high DPI settings or default font,
-        // see https://aka.ms/applicationconfiguration.
-        ApplicationConfiguration.Initialize();
-        Application.Run(new Form1());
-    }    
+        Debug.WriteLine("Hello World!");
+
+        BeginGame();
+
+        //ApplicationConfiguration.Initialize();
+        //Application.Run(new Form1());
+    }
+
+    private static void BeginGame()
+    {
+        Board = new Board(20, 20);
+
+        Teams.Add(new Team("Tortitas"));
+        Teams.Add(new Team("John"));
+
+        PopulateBoard(Board, Teams);
+
+        Debug.WriteLine("Game started");
+        Debug.WriteLine(Board);
+    }
+
+    private static void PopulateBoard(Board Board, List<Team> Teams)
+    {
+        var random = new Random();
+
+        Teams.ForEach(team =>
+        {
+            Ship.DEFAULT_SHIPS.ToList().ForEach(defaultShip =>
+            {
+                var ship = new Ship(defaultShip.name, defaultShip.matrix);
+
+                var position = Vector2.random(Board.width, Board.height);
+
+                while (PositionOccupied(Board, position)) position = Vector2.random(Board.width, Board.height);
+
+                ship.team = team;
+
+                ship.position = position;
+
+                Board.Ships.Add(ship);
+            });
+        });
+    }
+
+    private static bool PositionOccupied(Board board, Vector2 position)
+    {
+        return board.Ships.Any(ship => ship.position == position);
+    }
 }
