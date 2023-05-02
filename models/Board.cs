@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text;
 
 namespace dam_battleship.models;
@@ -14,6 +15,54 @@ internal class Board
 
     public int width { get; }
     public int height { get; }
+
+    public Ship? getShipAt(Vector2 position)
+    {
+        foreach (var ship in Ships)
+        {
+            if (ship.position == position) return ship;
+
+            foreach (Vector2 shipPosition in ship.getPositions())
+                if (shipPosition == position)
+                    return ship;
+        }
+
+        return null;
+    }
+
+    public bool isPositionOccupied(Vector2 position)
+    {
+        var ship = getShipAt(position);
+
+        return ship != null;
+    }
+
+    public char getCharAt(Vector2 position)
+    {
+        var ship = getShipAt(position);
+
+        return ship != null
+            ? ship.name.First()
+            : ' ';
+    }
+
+    public bool isPostionValidForShip(Vector2 position, Ship ship)
+    {
+        if (position.x < 0 || position.x >= width) return false;
+        if (position.y < 0 || position.y >= height) return false;
+
+        foreach (Vector2 shipPosition in ship.getPositions())
+        {
+            var finalPosition = new Vector2(position.x + shipPosition.x, position.y + shipPosition.y);
+            
+            if (finalPosition.x < 0 || finalPosition.x >= width) return false;
+            if (finalPosition.y < 0 || finalPosition.y >= height) return false;
+            
+            if (isPositionOccupied(finalPosition)) return false;
+        }
+        
+        return true;
+    }
 
     public override string? ToString()
     {
@@ -33,23 +82,5 @@ internal class Board
         }
 
         return sb.ToString();
-    }
-
-    public char getCharAt(Vector2 position)
-    {
-        foreach (var ship in Ships)
-        {
-            var character = ship.name.First();
-
-            if (ship.position == position) return character;
-
-            for (var k = 0; k < ship.matrix.GetLength(0); k++)
-                for (var l = 0; l < ship.matrix.GetLength(1); l++)
-                    if (ship.matrix[k, l] == 1)
-                        if (ship.position.x + l == position.x && ship.position.y + k == position.y)
-                            return character;
-        }
-
-        return ' ';
     }
 }

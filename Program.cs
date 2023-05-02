@@ -1,5 +1,5 @@
-using System.Diagnostics;
 using dam_battleship.models;
+using System.Diagnostics;
 
 namespace dam_battleship;
 
@@ -11,8 +11,6 @@ internal static class Program
     [STAThread]
     private static void Main()
     {
-        Debug.WriteLine("Hello World!");
-
         BeginGame();
 
         //ApplicationConfiguration.Initialize();
@@ -44,7 +42,8 @@ internal static class Program
 
                 var position = Vector2.random(Board.width, Board.height);
 
-                while (PositionOccupied(Board, position)) position = Vector2.random(Board.width, Board.height);
+                while (!Board.isPostionValidForShip(position, ship)) 
+                    position = Vector2.random(Board.width, Board.height);
 
                 ship.team = team;
 

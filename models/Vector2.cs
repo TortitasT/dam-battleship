@@ -29,7 +29,7 @@ internal class Vector2
 
     public override string? ToString()
     {
-        return base.ToString();
+        return $"Vector2({x}, {y})";
     }
 
     public static bool operator ==(Vector2 a, Vector2 b)
