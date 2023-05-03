@@ -7,7 +7,7 @@
         <Nullable>enable</Nullable>
         <UseWindowsForms>true</UseWindowsForms>
         <ImplicitUsings>enable</ImplicitUsings>
-        <EnableWindowsTargeting>True</enableWindowsTargeting>
+        <EnableWindowsTargeting>True</EnableWindowsTargeting>
         <KnownFrameworkReference Update="Microsoft.WindowsDesktop.App.WPF" IsWindowsOnly="false" />
     </PropertyGroup>
 
