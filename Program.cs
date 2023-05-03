@@ -13,8 +13,13 @@ internal static class Program
     {
         BeginGame();
 
-        //ApplicationConfiguration.Initialize();
-        //Application.Run(new Form1());
+        StartWinForms();
+    }
+
+    private static void StartWinForms()
+    {
+        ApplicationConfiguration.Initialize();
+        Application.Run(new Main());
     }
 
     private static void BeginGame()
@@ -53,10 +58,5 @@ internal static class Program
                 board.Ships.Add(ship);
             });
         });
-    }
-
-    private static bool PositionOccupied(Board board, Vector2 position)
-    {
-        return board.Ships.Any(ship => ship.Position == position);
     }
 }
