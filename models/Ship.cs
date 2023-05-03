@@ -2,7 +2,7 @@ namespace dam_battleship.models;
 
 internal class Ship
 {
-    public static Ship[] DEFAULT_SHIPS =
+    public static Ship[] DefaultShips =
     {
         new("Aircraft Carrier", new[,]
         {
@@ -33,31 +33,31 @@ internal class Ship
 
     public Ship(string name, int[,] matrix)
     {
-        this.name = name;
-        this.matrix = matrix;
-        position = new Vector2(0, 0);
+        this.Name = name;
+        this.Matrix = matrix;
+        Position = new Vector2(0, 0);
     }
 
-    public Vector2 position { get; set; }
+    public Vector2 Position { get; set; }
 
-    public Team? team { get; set; }
+    public Team? Team { get; set; }
 
-    public string name { get; }
+    public string Name { get; }
 
-    public int[,] matrix { get; }
+    public int[,] Matrix { get; }
 
     public override string ToString()
     {
-        return $"{name} at {position}";
+        return $"{Name} at {Position}";
     }
 
-    public Vector2[] getPositions()
+    public Vector2[] GetPositions()
     {
         var positions = new List<Vector2>();
-        for (var y = 0; y < matrix.GetLength(0); y++)
-        for (var x = 0; x < matrix.GetLength(1); x++)
-                if (matrix[y, x] == 1)
-                positions.Add(new Vector2(position.x + x, position.y + y));
+        for (var y = 0; y < Matrix.GetLength(0); y++)
+        for (var x = 0; x < Matrix.GetLength(1); x++)
+            if (Matrix[y, x] == 1)
+                positions.Add(new Vector2(Position.X + x, Position.Y + y));
         return positions.ToArray();
     }
 }

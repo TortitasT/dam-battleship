@@ -1,5 +1,5 @@
-using dam_battleship.models;
 using System.Diagnostics;
+using dam_battleship.models;
 
 namespace dam_battleship;
 
@@ -21,6 +21,7 @@ internal static class Program
     {
         Board = new Board(20, 20);
 
+        Teams.Clear();
         Teams.Add(new Team("Tortitas"));
         Teams.Add(new Team("John"));
 
@@ -30,32 +31,32 @@ internal static class Program
         Debug.WriteLine(Board);
     }
 
-    private static void PopulateBoard(Board Board, List<Team> Teams)
+    private static void PopulateBoard(Board board, List<Team> teams)
     {
         var random = new Random();
 
-        Teams.ForEach(team =>
+        teams.ForEach(team =>
         {
-            Ship.DEFAULT_SHIPS.ToList().ForEach(defaultShip =>
+            Ship.DefaultShips.ToList().ForEach(defaultShip =>
             {
-                var ship = new Ship(defaultShip.name, defaultShip.matrix);
+                var ship = new Ship(defaultShip.Name, defaultShip.Matrix);
 
-                var position = Vector2.random(Board.width, Board.height);
+                var position = Vector2.Random(board.Width, board.Height);
 
-                while (!Board.isPostionValidForShip(position, ship)) 
-                    position = Vector2.random(Board.width, Board.height);
+                while (!board.IsPostionValidForShip(position, ship))
+                    position = Vector2.Random(board.Width, board.Height);
 
-                ship.team = team;
+                ship.Team = team;
 
-                ship.position = position;
+                ship.Position = position;
 
-                Board.Ships.Add(ship);
+                board.Ships.Add(ship);
             });
         });
     }
 
     private static bool PositionOccupied(Board board, Vector2 position)
     {
-        return board.Ships.Any(ship => ship.position == position);
+        return board.Ships.Any(ship => ship.Position == position);
     }
 }

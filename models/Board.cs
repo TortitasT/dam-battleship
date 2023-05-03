@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Text;
 
 namespace dam_battleship.models;
@@ -9,20 +8,20 @@ internal class Board
 
     public Board(int width, int height)
     {
-        this.width = width;
-        this.height = height;
+        this.Width = width;
+        this.Height = height;
     }
 
-    public int width { get; }
-    public int height { get; }
+    public int Width { get; }
+    public int Height { get; }
 
-    public Ship? getShipAt(Vector2 position)
+    public Ship? GetShipAt(Vector2 position)
     {
         foreach (var ship in Ships)
         {
-            if (ship.position == position) return ship;
+            if (ship.Position == position) return ship;
 
-            foreach (Vector2 shipPosition in ship.getPositions())
+            foreach (var shipPosition in ship.GetPositions())
                 if (shipPosition == position)
                     return ship;
         }
@@ -30,37 +29,42 @@ internal class Board
         return null;
     }
 
-    public bool isPositionOccupied(Vector2 position)
+    public bool IsPositionOccupied(Vector2 position)
     {
-        var ship = getShipAt(position);
+        var ship = GetShipAt(position);
 
         return ship != null;
     }
 
-    public char getCharAt(Vector2 position)
+    public char GetCharAt(Vector2 position)
     {
-        var ship = getShipAt(position);
+        var ship = GetShipAt(position);
 
         return ship != null
-            ? ship.name.First()
+            ? ship.Name.First()
             : ' ';
     }
 
-    public bool isPostionValidForShip(Vector2 position, Ship ship)
+    public bool IsPositionOutOfBounds(Vector2 position)
     {
-        if (position.x < 0 || position.x >= width) return false;
-        if (position.y < 0 || position.y >= height) return false;
+        if (position.X < 0 || position.X >= Width) return true;
+        if (position.Y < 0 || position.Y >= Height) return true;
+        return false;
+    }
 
-        foreach (Vector2 shipPosition in ship.getPositions())
+    public bool IsPostionValidForShip(Vector2 position, Ship ship)
+    {
+        if (IsPositionOutOfBounds(position)) return false;
+
+        foreach (var shipPosition in ship.GetPositions())
         {
-            var finalPosition = new Vector2(position.x + shipPosition.x, position.y + shipPosition.y);
-            
-            if (finalPosition.x < 0 || finalPosition.x >= width) return false;
-            if (finalPosition.y < 0 || finalPosition.y >= height) return false;
-            
-            if (isPositionOccupied(finalPosition)) return false;
+            var finalPosition = new Vector2(position.X + shipPosition.X, position.Y + shipPosition.Y);
+
+            if(IsPositionOutOfBounds(finalPosition)) return false;
+
+            if (IsPositionOccupied(finalPosition)) return false;
         }
-        
+
         return true;
     }
 
@@ -68,13 +72,13 @@ internal class Board
     {
         var sb = new StringBuilder();
 
-        for (var y = 0; y < height; y++)
+        for (var y = 0; y < Height; y++)
         {
             sb.Append("|");
-            for (var x = 0; x < width; x++)
+            for (var x = 0; x < Width; x++)
             {
                 sb.Append(" ");
-                sb.Append(getCharAt(new Vector2(x, y)));
+                sb.Append(GetCharAt(new Vector2(x, y)));
                 sb.Append(" ");
             }
 

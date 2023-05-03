@@ -2,16 +2,16 @@
 
 internal class Team
 {
-    private static int teamIndex;
+    private static int _teamIndex;
 
     public Team(string name)
     {
-        id = teamIndex;
-        this.name = name;
+        Id = _teamIndex;
+        this.Name = name;
 
-        teamIndex++;
+        _teamIndex++;
     }
 
-    private int id { get; }
-    private string name { get; }
+    private int Id { get; }
+    private string Name { get; }
 }
