@@ -1,6 +1,6 @@
 namespace dam_battleship.models;
 
-internal class Ship
+public class Ship
 {
     public static Ship[] DefaultShips =
     {
@@ -44,7 +44,7 @@ internal class Ship
 
     public string Name { get; }
 
-    public int[,] Matrix { get; }
+    public int[,] Matrix { get; set; }
 
     public override string ToString()
     {

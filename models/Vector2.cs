@@ -1,6 +1,6 @@
 namespace dam_battleship.models;
 
-internal class Vector2
+public class Vector2
 {
     public Vector2(int x, int y)
     {
@@ -11,7 +11,7 @@ internal class Vector2
     public int X { get; }
     public int Y { get; }
 
-    public static Vector2 Random(int width, int height)
+    public static Vector2 Random(int width = 100, int height = 100)
     {
         var random = new Random();
         return new Vector2(random.Next(width), random.Next(height));

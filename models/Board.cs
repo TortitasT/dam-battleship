@@ -2,7 +2,7 @@ using System.Text;
 
 namespace dam_battleship.models;
 
-internal class Board
+public class Board
 {
     public readonly List<Ship> Ships = new();
 

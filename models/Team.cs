@@ -1,6 +1,6 @@
 ﻿namespace dam_battleship.models;
 
-internal class Team
+public class Team
 {
     private static int _teamIndex;
 
@@ -12,6 +12,6 @@ internal class Team
         _teamIndex++;
     }
 
-    private int Id { get; }
-    private string Name { get; }
+    public int Id { get; }
+    public string Name { get; }
 }
