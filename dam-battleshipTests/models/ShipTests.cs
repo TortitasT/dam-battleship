@@ -1,45 +1,43 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace dam_battleship.models.Tests
+namespace dam_battleship.models.Tests;
+
+[TestClass]
+public class ShipTests
 {
-    [TestClass()]
-    public class ShipTests
+    private readonly int[,] _matrix =
     {
-        private readonly int[,] _matrix = new int[,]{
-            { 1, 1, 1, 1, 1 },
-            { 0, 1, 0, 1, 0 }
-        };
-        private readonly Ship _ship = new("Yamato", new int[,] { });
+        { 1, 1, 1, 1, 1 },
+        { 0, 1, 0, 1, 0 }
+    };
 
-        [TestInitialize]
-        public void TestInitialize()
-        {
-            _ship.Matrix = _matrix;
-        }
+    private readonly Ship _ship = new Ship("Yamato", new int[,] { });
 
-        [TestMethod()]
-        public void ShipTest()
-        {
-            Assert.AreEqual("Yamato", _ship.Name);
-        }
+    [TestInitialize]
+    public void TestInitialize()
+    {
+        _ship.Matrix = _matrix;
+    }
 
-        [TestMethod()]
-        public void ToStringTest()
-        {
-            Assert.AreEqual("Yamato at Vector2(0, 0)", _ship.ToString());
-        }
+    [TestMethod]
+    public void ShipTest()
+    {
+        Assert.AreEqual("Yamato", _ship.Name);
+    }
 
-        [TestMethod()]
-        public void GetPositionsTest()
-        {
-            var positions = _ship.GetPositions().ToList();
+    [TestMethod]
+    public void ToStringTest()
+    {
+        Assert.AreEqual("Yamato at Vector2(0, 0)", _ship.ToString());
+    }
 
-            Assert.AreEqual(7, positions.Count);
+    [TestMethod]
+    public void GetPositionsTest()
+    {
+        var positions = _ship.GetPositions().ToList();
 
-            foreach (var position in positions)
-            {
-                Assert.IsTrue(_matrix[position.Y, position.X] == 1);
-            }
-        }
+        Assert.AreEqual(7, positions.Count);
+
+        foreach (Vector2 position in positions) Assert.IsTrue(_matrix[position.Y, position.X] == 1);
     }
 }

@@ -1,17 +1,16 @@
-namespace dam_battleship.utils
+namespace dam_battleship.utils;
+
+public class SeededRandom
 {
-    public class SeededRandom
+    private static Random _random = new Random();
+
+    public static int Next(int min, int max)
     {
-        private static System.Random _random = new();
+        return _random.Next(min, max);
+    }
 
-        public static int Next(int min, int max)
-        {
-            return _random.Next(min, max);
-        }
-
-        public static void SetSeed(int seed)
-        {
-            _random = new(seed);
-        }
+    public static void SetSeed(int seed)
+    {
+        _random = new Random(seed);
     }
 }

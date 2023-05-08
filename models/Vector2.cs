@@ -1,13 +1,13 @@
-namespace dam_battleship.models;
-
 using dam_battleship.utils;
+
+namespace dam_battleship.models;
 
 public class Vector2
 {
     public Vector2(int x, int y)
     {
-        this.X = x;
-        this.Y = y;
+        X = x;
+        Y = y;
     }
 
     public int X { get; }

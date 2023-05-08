@@ -1,13 +1,13 @@
+using System.Diagnostics;
 using dam_battleship.models;
 using dam_battleship.utils;
-using System.Diagnostics;
 
 namespace dam_battleship;
 
 internal static class Program
 {
     private static Board? Board { get; set; }
-    private static List<Team> Teams { get; } = new();
+    private static List<Team> Teams { get; } = new List<Team>();
 
     [STAThread]
     private static void Main()

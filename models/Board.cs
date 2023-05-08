@@ -4,12 +4,12 @@ namespace dam_battleship.models;
 
 public class Board
 {
-    public readonly List<Ship> Ships = new();
+    public readonly List<Ship> Ships = new List<Ship>();
 
     public Board(int width, int height)
     {
-        this.Width = width;
-        this.Height = height;
+        Width = width;
+        Height = height;
     }
 
     public int Width { get; }
@@ -17,11 +17,11 @@ public class Board
 
     public Ship? GetShipAt(Vector2 position)
     {
-        foreach (var ship in Ships)
+        foreach (Ship ship in Ships)
         {
             if (ship.Position == position) return ship;
 
-            foreach (var shipPosition in ship.GetPositions())
+            foreach (Vector2 shipPosition in ship.GetPositions())
                 if (shipPosition == position)
                     return ship;
         }
@@ -31,14 +31,14 @@ public class Board
 
     public bool IsPositionOccupied(Vector2 position)
     {
-        var ship = GetShipAt(position);
+        Ship? ship = GetShipAt(position);
 
         return ship != null;
     }
 
     public char GetCharAt(Vector2 position)
     {
-        var ship = GetShipAt(position);
+        Ship? ship = GetShipAt(position);
 
         return ship != null
             ? ship.Name.First()
@@ -56,9 +56,9 @@ public class Board
     {
         if (IsPositionOutOfBounds(position)) return false;
 
-        foreach (var shipPosition in ship.GetPositions())
+        foreach (Vector2 shipPosition in ship.GetPositions())
         {
-            var finalPosition = new Vector2(position.X + shipPosition.X, position.Y + shipPosition.Y);
+            Vector2 finalPosition = new Vector2(position.X + shipPosition.X, position.Y + shipPosition.Y);
 
             if (IsPositionOutOfBounds(finalPosition)) return false;
 
@@ -70,7 +70,7 @@ public class Board
 
     public override string? ToString()
     {
-        var sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         for (var y = 0; y < Height; y++)
         {

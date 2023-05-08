@@ -1,32 +1,30 @@
 ﻿using dam_battleship.utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Utils = dam_battleship.utils.Utils;
 
-namespace dam_battleship.models.Tests
+namespace dam_battleship.models.Tests;
+
+[TestClass]
+public class BoardTests
 {
-    [TestClass()]
-    public class BoardTests
+    [TestMethod]
+    public void BoardTest()
     {
-        [TestMethod()]
-        public void BoardTest()
+        var stubsDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\stubs";
+
+        var expectedStdout = File.ReadAllText(stubsDirectory + "/seeded_board_output.txt");
+
+        SeededRandom.SetSeed(1234);
+
+        var teams = new List<Team>
         {
-            var stubsDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\stubs";
+            new Team("Test1"),
+            new Team("Test2")
+        };
 
-            var expectedStdout = File.ReadAllText(stubsDirectory + "/seeded_board_output.txt");
+        Board board = new Board(20, 20);
 
-            SeededRandom.SetSeed(1234);
+        Utils.PopulateBoard(board, teams);
 
-            var teams = new List<Team>()
-            {
-                new Team("Test1"),
-                new Team("Test2")
-            };
-
-            var board = new Board(20, 20);
-
-            Utils.PopulateBoard(board, teams);
-
-            Assert.IsTrue(expectedStdout.Equals(board.ToString()));
-        }
+        Assert.IsTrue(expectedStdout.Equals(board.ToString()));
     }
 }

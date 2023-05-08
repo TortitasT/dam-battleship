@@ -7,7 +7,7 @@ public class Team
     public Team(string name)
     {
         Id = _teamIndex;
-        this.Name = name;
+        Name = name;
 
         _teamIndex++;
     }
