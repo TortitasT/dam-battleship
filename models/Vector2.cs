@@ -1,5 +1,7 @@
 namespace dam_battleship.models;
 
+using dam_battleship.utils;
+
 public class Vector2
 {
     public Vector2(int x, int y)
@@ -13,8 +15,7 @@ public class Vector2
 
     public static Vector2 Random(int width = 100, int height = 100)
     {
-        var random = new Random();
-        return new Vector2(random.Next(width), random.Next(height));
+        return new Vector2(SeededRandom.Next(0, width), SeededRandom.Next(0, height));
     }
 
     public override bool Equals(object? obj)

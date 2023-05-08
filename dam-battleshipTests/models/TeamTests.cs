@@ -1,16 +1,16 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using dam_battleship.models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dam_battleship.models.Tests
 {
     [TestClass()]
     public class TeamTests
     {
+        [TestInitialize()]
+        public void TestInitialize()
+        {
+            Team.ResetIndex();
+        }
+
         [TestMethod()]
         public void TeamTest()
         {

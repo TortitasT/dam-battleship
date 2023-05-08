@@ -55,9 +55,9 @@ public class Ship
     {
         var positions = new List<Vector2>();
         for (var y = 0; y < Matrix.GetLength(0); y++)
-        for (var x = 0; x < Matrix.GetLength(1); x++)
-            if (Matrix[y, x] == 1)
-                positions.Add(new Vector2(Position.X + x, Position.Y + y));
+            for (var x = 0; x < Matrix.GetLength(1); x++)
+                if (Matrix[y, x] == 1)
+                    positions.Add(new Vector2(Position.X + x, Position.Y + y));
         return positions.ToArray();
     }
 }

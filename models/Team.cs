@@ -14,4 +14,9 @@ public class Team
 
     public int Id { get; }
     public string Name { get; }
+
+    public static void ResetIndex()
+    {
+        _teamIndex = 0;
+    }
 }

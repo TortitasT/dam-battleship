@@ -1,5 +1,6 @@
-using System.Diagnostics;
 using dam_battleship.models;
+using dam_battleship.utils;
+using System.Diagnostics;
 
 namespace dam_battleship;
 
@@ -11,6 +12,8 @@ internal static class Program
     [STAThread]
     private static void Main()
     {
+        SeededRandom.SetSeed(1234);
+
         BeginGame();
 
         StartWinForms();
@@ -30,33 +33,9 @@ internal static class Program
         Teams.Add(new Team("Tortitas"));
         Teams.Add(new Team("John"));
 
-        PopulateBoard(Board, Teams);
+        Utils.PopulateBoard(Board, Teams);
 
         Debug.WriteLine("Game started");
         Debug.WriteLine(Board);
-    }
-
-    private static void PopulateBoard(Board board, List<Team> teams)
-    {
-        var random = new Random();
-
-        teams.ForEach(team =>
-        {
-            Ship.DefaultShips.ToList().ForEach(defaultShip =>
-            {
-                var ship = new Ship(defaultShip.Name, defaultShip.Matrix);
-
-                var position = Vector2.Random(board.Width, board.Height);
-
-                while (!board.IsPostionValidForShip(position, ship))
-                    position = Vector2.Random(board.Width, board.Height);
-
-                ship.Team = team;
-
-                ship.Position = position;
-
-                board.Ships.Add(ship);
-            });
-        });
     }
 }

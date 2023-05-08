@@ -52,7 +52,7 @@ public class Board
         return false;
     }
 
-    public bool IsPostionValidForShip(Vector2 position, Ship ship)
+    public bool IsPositionValidForShip(Vector2 position, Ship ship)
     {
         if (IsPositionOutOfBounds(position)) return false;
 
@@ -60,7 +60,7 @@ public class Board
         {
             var finalPosition = new Vector2(position.X + shipPosition.X, position.Y + shipPosition.Y);
 
-            if(IsPositionOutOfBounds(finalPosition)) return false;
+            if (IsPositionOutOfBounds(finalPosition)) return false;
 
             if (IsPositionOccupied(finalPosition)) return false;
         }
