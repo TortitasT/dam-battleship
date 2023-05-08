@@ -9,9 +9,7 @@ public class BoardTests
     [TestMethod]
     public void BoardTest()
     {
-        var stubsDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\stubs";
-
-        var expectedStdout = File.ReadAllText(stubsDirectory + "/seeded_board_output.txt");
+        var expectedStdout = "|                                                            |\n|                                  B  B  B  B                |\n|    C  C  C                    D  D                         |\n|                                                            |\n|                                                            |\n|                                                            |\n|                                     S  S  S                |\n|                                                            |\n|                                                            |\n|                                                       D  D |\n|                                                 C  C  C    |\n|                                              S  S  S       |\n|                                                            |\n|                                           A  A  A  A       |\n|                                                    A       |\n|                                                            |\n|                                                            |\n|                      A  A  A  A                            |\n|                   B  B  B  B  A                            |\n|                                                            |\n";
 
         SeededRandom.SetSeed(1234);
 
@@ -25,6 +23,9 @@ public class BoardTests
 
         Utils.PopulateBoard(board, teams);
 
-        Assert.IsTrue(expectedStdout.Equals(board.ToString()));
+        File.WriteAllText("testboard.txt", board.ToString());
+        File.WriteAllText("testExpected.txt", expectedStdout);
+
+        Assert.AreEqual(expectedStdout, board.ToString());
     }
 }
