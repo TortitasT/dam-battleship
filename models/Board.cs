@@ -15,13 +15,13 @@ public class Board
     public int Width { get; }
     public int Height { get; }
 
-    public Ship? GetShipAt(Vector2 position)
+    public Ship? GetShipAt(Coordinate position)
     {
         foreach (Ship ship in Ships)
         {
             if (ship.Position == position) return ship;
 
-            foreach (Vector2 shipPosition in ship.GetPositions())
+            foreach (Coordinate shipPosition in ship.GetPositions())
                 if (shipPosition == position)
                     return ship;
         }
@@ -29,14 +29,14 @@ public class Board
         return null;
     }
 
-    public bool IsPositionOccupied(Vector2 position)
+    public bool IsPositionOccupied(Coordinate position)
     {
         Ship? ship = GetShipAt(position);
 
         return ship != null;
     }
 
-    public char GetCharAt(Vector2 position)
+    public char GetCharAt(Coordinate position)
     {
         Ship? ship = GetShipAt(position);
 
@@ -45,20 +45,20 @@ public class Board
             : ' ';
     }
 
-    public bool IsPositionOutOfBounds(Vector2 position)
+    public bool IsPositionOutOfBounds(Coordinate position)
     {
         if (position.X < 0 || position.X >= Width) return true;
         if (position.Y < 0 || position.Y >= Height) return true;
         return false;
     }
 
-    public bool IsPositionValidForShip(Vector2 position, Ship ship)
+    public bool IsPositionValidForShip(Coordinate position, Ship ship)
     {
         if (IsPositionOutOfBounds(position)) return false;
 
-        foreach (Vector2 shipPosition in ship.GetPositions())
+        foreach (Coordinate shipPosition in ship.GetPositions())
         {
-            Vector2 finalPosition = new Vector2(position.X + shipPosition.X, position.Y + shipPosition.Y);
+            Coordinate finalPosition = new Coordinate(position.X + shipPosition.X, position.Y + shipPosition.Y);
 
             if (IsPositionOutOfBounds(finalPosition)) return false;
 
@@ -78,7 +78,7 @@ public class Board
             for (var x = 0; x < Width; x++)
             {
                 sb.Append(" ");
-                sb.Append(GetCharAt(new Vector2(x, y)));
+                sb.Append(GetCharAt(new Coordinate(x, y)));
                 sb.Append(" ");
             }
 

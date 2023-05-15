@@ -28,7 +28,7 @@ public class ShipTests
     [TestMethod]
     public void ToStringTest()
     {
-        Assert.AreEqual("Yamato at Vector2(0, 0)", _ship.ToString());
+        Assert.AreEqual("Yamato at (0, 0)", _ship.ToString());
     }
 
     [TestMethod]
@@ -38,6 +38,6 @@ public class ShipTests
 
         Assert.AreEqual(7, positions.Count);
 
-        foreach (Vector2 position in positions) Assert.IsTrue(_matrix[position.Y, position.X] == 1);
+        foreach (Coordinate position in positions) Assert.IsTrue(_matrix[position.Y, position.X] == 1);
     }
 }

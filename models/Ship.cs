@@ -12,10 +12,10 @@ public class Ship
     {
         Name = name;
         Matrix = matrix;
-        Position = new Vector2(0, 0);
+        Position = new Coordinate(0, 0);
     }
 
-    public Vector2 Position { get; set; }
+    public Coordinate Position { get; set; }
 
     public Team? Team { get; set; }
 
@@ -28,13 +28,13 @@ public class Ship
         return $"{Name} at {Position}";
     }
 
-    public Vector2[] GetPositions()
+    public Coordinate[] GetPositions()
     {
-        var positions = new List<Vector2>();
+        var positions = new List<Coordinate>();
         for (var y = 0; y < Matrix.GetLength(0); y++)
         for (var x = 0; x < Matrix.GetLength(1); x++)
             if (Matrix[y, x] == 1)
-                positions.Add(new Vector2(Position.X + x, Position.Y + y));
+                positions.Add(new Coordinate(Position.X + x, Position.Y + y));
         return positions.ToArray();
     }
 }

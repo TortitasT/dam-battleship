@@ -8,45 +8,47 @@ public class Vector2Tests
     [TestMethod]
     public void Vector2Test()
     {
-        Vector2 vector2 = new Vector2(1, 2);
+        Coordinate coordinate = new Coordinate(1, 2);
 
-        Assert.AreEqual(1, vector2.X);
-        Assert.AreEqual(2, vector2.Y);
+        Assert.AreEqual(1, coordinate.X);
+        Assert.AreEqual(2, coordinate.Y);
     }
 
     [TestMethod]
     public void RandomTest()
     {
-        Vector2 vector2 = Vector2.Random();
+        Coordinate coordinate = Coordinate.Random();
 
-        Assert.IsTrue(vector2.X >= 0 && vector2.X < 100);
+        Assert.IsTrue(coordinate.X >= 0 && coordinate.X < 100);
     }
 
     [TestMethod]
     public void EqualsTest()
     {
-        Vector2 vector2One = new Vector2(1, 2);
-        Vector2 vector2Two = new Vector2(1, 2);
+        Coordinate coordinateOne = new Coordinate(1, 2);
+        Coordinate coordinateTwo = new Coordinate(1, 2);
 
-        Assert.IsFalse(vector2One.Equals(vector2Two));
-        Assert.IsTrue(vector2One.Equals(vector2One));
+        Assert.IsTrue(coordinateOne.Equals(coordinateTwo));
+        Assert.IsTrue(coordinateOne.Equals(coordinateOne));
+        Assert.IsFalse(new Coordinate(12, 12).Equals(coordinateTwo));
     }
 
     [TestMethod]
     public void GetHashCodeTest()
     {
-        Vector2 vector2One = new Vector2(1, 2);
-        Vector2 vector2Two = new Vector2(1, 2);
+        Coordinate coordinateOne = new Coordinate(1, 2);
+        Coordinate coordinateTwo = new Coordinate(1, 2);
 
-        Assert.AreNotEqual(vector2One.GetHashCode(), vector2Two.GetHashCode());
-        Assert.AreEqual(vector2One.GetHashCode(), vector2One.GetHashCode());
+        Assert.AreEqual(coordinateOne.GetHashCode(), coordinateTwo.GetHashCode());
+        Assert.AreEqual(coordinateOne.GetHashCode(), coordinateOne.GetHashCode());
+        Assert.AreNotEqual(new Coordinate(12, 12), coordinateTwo);
     }
 
     [TestMethod]
     public void ToStringTest()
     {
-        Vector2 vector2 = new Vector2(1, 2);
+        Coordinate coordinate = new Coordinate(1, 2);
 
-        Assert.AreEqual("Vector2(1, 2)", vector2.ToString());
+        Assert.AreEqual("(1, 2)", coordinate.ToString());
     }
 }

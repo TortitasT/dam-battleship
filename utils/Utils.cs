@@ -23,10 +23,10 @@ public class Utils
                     {
                         Ship ship = new Ship(defaultShip.Name, defaultShip.Matrix);
 
-                        Vector2 position = Vector2.Random(board.Width, board.Height);
+                        Coordinate position = Coordinate.Random(board.Width, board.Height);
 
                         while (!board.IsPositionValidForShip(position, ship))
-                            position = Vector2.Random(board.Width, board.Height);
+                            position = Coordinate.Random(board.Width, board.Height);
 
                         ship.Team = team;
 
