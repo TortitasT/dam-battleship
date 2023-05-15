@@ -2,7 +2,7 @@ namespace dam_battleship.utils;
 
 public class SeededRandom
 {
-    private static Random _random = new Random();
+    private static Random _random = new();
 
     public static int Next(int min, int max)
     {

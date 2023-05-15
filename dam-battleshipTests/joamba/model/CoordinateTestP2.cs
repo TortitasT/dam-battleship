@@ -48,7 +48,7 @@ namespace dam_battleshipTests.joamba.model
         [TestMethod]
         public void Coordinate_TestAdjacentCoordinates()
         {
-            Coordinate c = new Coordinate(-3, 5);
+            Coordinate c = new(-3, 5);
             HashSet<Coordinate> setcoord = c.AdjacentCoordinates();
             for (int i = -1; i < 2; i++)
             {

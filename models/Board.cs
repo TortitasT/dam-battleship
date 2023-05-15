@@ -4,9 +4,9 @@ namespace dam_battleship.models;
 
 public class Board
 {
-    public readonly List<Ship> Ships = new List<Ship>();
+    public readonly List<Ship> Ships = new();
 
-    private HashSet<Coordinate> Seen = new HashSet<Coordinate>();
+    private HashSet<Coordinate> Seen = new();
 
     public Board(int size) : this(size, size) { }
 
@@ -66,7 +66,7 @@ public class Board
 
     public HashSet<Coordinate> GetNeighborhood(Ship ship, Coordinate coordinate)
     {
-        var copyShip = new Ship(ship.Name, ship.Matrix);
+        var copyShip = new Ship(ship.Orientation, ship.Character, ship.Name);
 
         copyShip.Position = coordinate;
 
@@ -140,7 +140,7 @@ public class Board
 
         foreach (Coordinate shipPosition in ship.GetPositions())
         {
-            Coordinate finalPosition = new Coordinate(position.X + shipPosition.X, position.Y + shipPosition.Y);
+            Coordinate finalPosition = new(position.X + shipPosition.X, position.Y + shipPosition.Y);
 
             if (IsPositionOutOfBounds(finalPosition)) return false;
 
@@ -152,7 +152,7 @@ public class Board
 
     public override string? ToString()
     {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
 
         for (var y = 0; y < Height; y++)
         {

@@ -65,7 +65,7 @@ namespace dam_battleshipTests.joamba.model
         [TestMethod]
         public void Board_TestGetSize()
         {
-            Board board = new Board(MIN_BOARD_SIZE - 1);
+            Board board = new(MIN_BOARD_SIZE - 1);
             Assert.AreEqual(MIN_BOARD_SIZE, board.GetSize());
 
             board = new Board(MAX_BOARD_SIZE + 1);
@@ -83,7 +83,7 @@ namespace dam_battleshipTests.joamba.model
         public void Board_TestCheckCoordinate()
         {
             int SIZE = 15;
-            Board board = new Board(SIZE);
+            Board board = new(SIZE);
 
             Assert.IsFalse(board.CheckCoordinate(new Coordinate(0, SIZE)));
             Assert.IsFalse(board.CheckCoordinate(new Coordinate(-1, SIZE - 1)));
@@ -195,7 +195,7 @@ namespace dam_battleshipTests.joamba.model
         {
             Assert.IsTrue(board.AddShip(fragata, new Coordinate(3, 1)));
 
-            Coordinate c = new Coordinate(2, 3);
+            Coordinate c = new(2, 3);
             Assert.IsNull(board.GetShip(c));
             for (int i = 4; i < 7; i++)
             {
@@ -211,7 +211,7 @@ namespace dam_battleshipTests.joamba.model
         public void Board_TestAggregationBoardShip()
         {
             board.AddShip(fragata, new Coordinate(3, 1));
-            Coordinate c = new Coordinate(0, 3);
+            Coordinate c = new(0, 3);
             for (int i = 4; i < 7; i++)
             {
                 c.Set(0, i);
@@ -263,7 +263,7 @@ namespace dam_battleshipTests.joamba.model
         public void Board_TestCompositionBoardCoordinate()
         {
             board.AddShip(galeon, new Coordinate(0, 1));
-            List<Coordinate> listHits = new List<Coordinate>(); // for shoots
+            List<Coordinate> listHits = new(); // for shoots
             Coordinate c;
 
             // shooting the ship
@@ -367,7 +367,7 @@ namespace dam_battleshipTests.joamba.model
             Assert.AreEqual(7, neighborhood.Count);
             for (int i = 1; i < 4; i++)
                 for (int j = 7; j < 11; j++)
-                    if (j > 9 || (j == 8 || j == 9) && i == 2)
+                    if (j > 9 || ((j == 8 || j == 9) && i == 2))
                         Assert.IsFalse(neighborhood.Contains(new Coordinate(i, j)), $"x,y = {i},{j}");
                     else
                         Assert.IsTrue(neighborhood.Contains(new Coordinate(i, j)), $"x,y = {i},{j}");

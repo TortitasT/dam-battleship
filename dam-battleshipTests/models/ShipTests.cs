@@ -3,41 +3,42 @@
 namespace dam_battleship.models.Tests;
 
 [TestClass]
+[Obsolete("Ships matrix now work differently", true)]
 public class ShipTests
 {
-    private readonly int[,] _matrix =
-    {
-        { 1, 1, 1, 1, 1 },
-        { 0, 1, 0, 1, 0 }
-    };
+    /*    private readonly int[,] _matrix =
+        {
+            { 1, 1, 1, 1, 1 },
+            { 0, 1, 0, 1, 0 }
+        };
 
-    private readonly Ship _ship = new Ship("Yamato", new int[,] { });
+        private readonly Ship _ship = new Ship("Yamato", new int[,] { });
 
-    [TestInitialize]
-    public void TestInitialize()
-    {
-        _ship.Matrix = _matrix;
-    }
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            _ship.Matrix = _matrix;
+        }
 
-    [TestMethod]
-    public void ShipTest()
-    {
-        Assert.AreEqual("Yamato", _ship.Name);
-    }
+        [TestMethod]
+        public void ShipTest()
+        {
+            Assert.AreEqual("Yamato", _ship.Name);
+        }
 
-    [TestMethod]
-    public void ToStringTest()
-    {
-        Assert.AreEqual("Yamato at (0, 0)", _ship.ToString());
-    }
+        [TestMethod]
+        public void ToStringTest()
+        {
+            Assert.AreEqual("Yamato at (0, 0)", _ship.ToString());
+        }
 
-    [TestMethod]
-    public void GetPositionsTest()
-    {
-        var positions = _ship.GetPositions().ToList();
+        [TestMethod]
+        public void GetPositionsTest()
+        {
+            var positions = _ship.GetPositions().ToList();
 
-        Assert.AreEqual(7, positions.Count);
+            Assert.AreEqual(7, positions.Count);
 
-        foreach (Coordinate position in positions) Assert.IsTrue(_matrix[position.Y, position.X] == 1);
-    }
+            foreach (Coordinate position in positions) Assert.IsTrue(_matrix[position.Y, position.X] == 1);
+        }*/
 }

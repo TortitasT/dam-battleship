@@ -14,12 +14,12 @@ public class TeamTests
     [TestMethod]
     public void TeamTest()
     {
-        Team team = new Team("Team");
+        Team team = new("Team");
 
         Assert.AreEqual("Team", team.Name);
         Assert.AreEqual(0, team.Id);
 
-        Team team2 = new Team("Team2");
+        Team team2 = new("Team2");
 
         Assert.AreEqual("Team2", team2.Name);
         Assert.AreEqual(1, team2.Id);

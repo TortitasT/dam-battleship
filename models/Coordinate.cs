@@ -55,7 +55,7 @@ public class Coordinate
 
         var coordinate = (Coordinate)obj;
 
-        return coordinate.X == this.X && coordinate.Y == this.Y;
+        return coordinate.X == X && coordinate.Y == Y;
     }
 
     public override int GetHashCode()
@@ -82,9 +82,14 @@ public class Coordinate
     {
         var neighborhood = new HashSet<Coordinate>();
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i <= 8; i++)
         {
-            neighborhood.Add(new Coordinate(X + i, Y + i));
+            if (i == 4) continue;
+
+            var x = X + (i % 3) - 1;
+            var y = Y + (i / 3) - 1;
+
+            neighborhood.Add(new Coordinate(x, y));
         }
 
         return neighborhood;

@@ -169,7 +169,7 @@ namespace dam_battleshipTests.joamba.model
             Assert.IsFalse(c.Equals(new Coordinate(24, 0)));
             Assert.IsTrue(c.Equals(c));
 
-            Coordinate d = new Coordinate(0, 0);
+            Coordinate d = new(0, 0);
             Assert.IsTrue(c.Equals(d));
         }
 
@@ -177,7 +177,7 @@ namespace dam_battleshipTests.joamba.model
         private string RemoveSpaces(string? str)
         {
             string[] exp = str.Split(" ");
-            string nstr = new string("");
+            string nstr = new("");
 
             foreach (string s in exp)
             {

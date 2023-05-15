@@ -19,7 +19,7 @@ public class BoardTests
             new Team("Test2")
         };
 
-        Board board = new Board(20, 20);
+        Board board = new(20, 20);
 
         Utils.PopulateBoard(board, teams);
 
