@@ -11,6 +11,13 @@ public class Ship
     public Ship(Orientation orientation, char character, string name) : this(name, new int[,] { { 1, 1, 1 } })
     {
         Orientation = orientation;
+
+        Matrix = new int[,]
+        {
+            { 1, 1, 1 },
+            { 1, 1, 1 },
+            { 1, 1, 1 }
+        };
     }
 
     public Ship(string name, int[,] matrix)
