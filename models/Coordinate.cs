@@ -11,12 +11,25 @@ public class Coordinate
     }
     public Coordinate(Coordinate coordinate) : this(coordinate.X, coordinate.Y) { }
 
-    public int X { get; }
-    public int Y { get; }
+    public int X { set; get; }
+    public int Y { set; get; }
 
     public static Coordinate Random(int width = 100, int height = 100)
     {
         return new Coordinate(SeededRandom.Next(0, width), SeededRandom.Next(0, height));
+    }
+
+    public void Set(int index, int value)
+    {
+        if (index != 0 && index != 1) { return; }
+
+        if (index == 0)
+        {
+            X = value;
+            return;
+        }
+
+        Y = value;
     }
 
     public int Get(int index)
@@ -53,6 +66,28 @@ public class Coordinate
     public override string? ToString()
     {
         return $"({X}, {Y})";
+    }
+
+    public Coordinate Copy()
+    {
+        return new Coordinate(X, Y);
+    }
+
+    public HashSet<Coordinate> AdjacentCoordinates()
+    {
+        return GetNeighborhood();
+    }
+
+    public HashSet<Coordinate> GetNeighborhood()
+    {
+        var neighborhood = new HashSet<Coordinate>();
+
+        for (int i = 0; i < 8; i++)
+        {
+            neighborhood.Add(new Coordinate(X + i, Y + i));
+        }
+
+        return neighborhood;
     }
 
     public static bool operator ==(Coordinate a, Coordinate b)
