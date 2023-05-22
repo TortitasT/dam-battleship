@@ -2,7 +2,7 @@ using System.Text;
 
 namespace dam_battleship.models;
 
-public class Ship
+public class Ship : ICloneable
 {
     public Ship(Orientation orientation, char character, string name)
     {
@@ -89,6 +89,11 @@ public class Ship
         return sb.ToString();
     }
 
+    public object Clone()
+    {
+        return MemberwiseClone();
+    }
+
     public char GetSymbol()
     {
         return Character;
@@ -145,6 +150,10 @@ public class Ship
         if (!GetPositions().Contains(coordinate)) return false;
 
         HitCoordinates.Add(coordinate);
+
+        if (GetPositions().All(IsHit))
+            Status = CellStatus.DESTROYED;
+
         return true;
     }
 

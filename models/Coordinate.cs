@@ -2,7 +2,7 @@ using dam_battleship.utils;
 
 namespace dam_battleship.models;
 
-public class Coordinate
+public class Coordinate : ICloneable
 {
     public Coordinate(int x, int y)
     {
@@ -70,7 +70,12 @@ public class Coordinate
 
     public Coordinate Copy()
     {
-        return new Coordinate(X, Y);
+        return (Coordinate)Clone();
+    }
+
+    public object Clone()
+    {
+        return MemberwiseClone();
     }
 
     public HashSet<Coordinate> AdjacentCoordinates()
