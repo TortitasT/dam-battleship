@@ -11,6 +11,8 @@ public class Board
     private static readonly char WATER_SYMBOL = ' ';
     private static readonly char NOTSEEN_SYMBOL = '?';
 
+    private int destroyedShips = 0;
+
     public readonly List<Ship> Ships = new();
 
     private HashSet<Coordinate> seen = new(); // TODO: no tocar la nomenclatura aunque de aviso, hay un test que usa reflexion para leer esta propiedad.
@@ -45,7 +47,7 @@ public class Board
         if (!IsPositionValidForShip(coordinate, ship)) return false;
 
         ship.Position = coordinate;
-        ship.Status = CellStatus.WATER;
+        ship.Reset();
         Ships.Add(ship);
 
         return true;
@@ -56,7 +58,7 @@ public class Board
         if (Ships.Count == 0)
             return true;
 
-        return Ships.All(ship => ship.Status == CellStatus.DESTROYED);
+        return Ships.All(ship => ship.IsShotDown());
     }
 
     public int GetSize()
@@ -142,14 +144,18 @@ public class Board
 
         var ship = GetShipAt(coordinate);
 
-        if (ship == null) return CellStatus.WATER;
+        if (ship == null) 
+            return CellStatus.WATER;
 
-        if (!ship.Hit(coordinate)) return CellStatus.WATER;
+        if (!ship.Hit(coordinate)) 
+            return CellStatus.WATER;
 
         if (!ship.IsShotDown())
             return CellStatus.HIT;
 
         GetNeighborhood(ship).ToList().ForEach(item => seen.Add(item));
+
+        destroyedShips++;
 
         return CellStatus.DESTROYED;
     }
@@ -182,11 +188,7 @@ public class Board
             return ship.Character;
 
         if (ship.IsHit(position))
-        {
-            Debug.WriteLine("position");
-
             return HIT_SYMBOL;
-        }
 
         return ship.Character;
     }
@@ -238,6 +240,7 @@ public class Board
 
         return sb.ToString();
 #endif
-        return $"Board {Width}; crafts: {Ships.Count}; destroyed: {Ships.Count(ship => ship.IsShotDown())}";
+        return $"Board {Width}; crafts: {Ships.Count}; destroyed: {destroyedShips}"; // eugh
+        // return $"Board {Width}; crafts: {Ships.Count}; destroyed: {Ships.Count(ship => ship.IsShotDown())}";
     }
 }

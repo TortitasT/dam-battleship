@@ -136,6 +136,12 @@ public class Ship : ICloneable
         return HitCoordinates.Count == GetPositions().Length;
     }
 
+    public void Reset()
+    {
+        Status = CellStatus.WATER;
+        HitCoordinates.Clear();
+    }
+
     public bool IsHit(Coordinate coordinate)
     {
         return HitCoordinates.Contains(coordinate);
