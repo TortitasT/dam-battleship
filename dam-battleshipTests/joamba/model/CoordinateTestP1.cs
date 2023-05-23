@@ -4,9 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace dam_battleshipTests.joamba.model
 {
     [TestClass]
-    public class CoordinateTest
+    public class CoordinateTestP1
     {
-        readonly List<int[]> vcoordinates = new();
         static readonly int[] vcoor = { 0, 0, -70, -2, 20 };
         readonly int DIM = vcoor.Length;
         List<Coordinate> lcoor;
@@ -37,7 +36,7 @@ namespace dam_battleshipTests.joamba.model
             Assert.AreEqual(c1.GetHashCode(), c2.GetHashCode());
         }
 
-        /* check if the constructor works well, analyzing if the components '0'
+        /* check if the constructor works well, analyzing if the components '0' and
          * '1' of each Coordinate created in the SetUp() method are the correct ones 
          */
         [TestMethod]
@@ -78,14 +77,14 @@ namespace dam_battleshipTests.joamba.model
         public void Coordinate_TestGetSet()
         {
             Coordinate c = lcoor[2];
-            Assert.AreEqual(-70, c.Get(0), "x!=-70");
-            Assert.AreEqual(-2, c.Get(1), "y!=-2");
+            Assert.AreEqual(-70, c.Get(0), "x==-70");
+            Assert.AreEqual(-2, c.Get(1), "y==-2");
 
-            // modify method Set to public or uncomment this assertion
-            /*c.Set(1, -11);
+            // modify method Set to public and uncomment this assertion
+            c.Set(1, -11);
             c.Set(0, 33);
-            Assert.AreEqual(33, c.Get(0), "x!=33");
-            Assert.AreEqual(-11, c.Get(1), "y!=-11");*/
+            Assert.AreEqual(33, c.Get(0), "x==33");
+            Assert.AreEqual(-11, c.Get(1), "y==-11");
         }
 
         /* The Coordinates created in the setUp() are added and it is 
@@ -188,13 +187,13 @@ namespace dam_battleshipTests.joamba.model
             return nstr;
         }
 
-        /* Test implement in the classroom as an example */
+        /* Test implemented in the classroom as an example */
         [TestMethod]
-        public void Coordinate_ConstructorWithTwoValidParams()
+        public void Coordinate_TestConstructorWithTwoValidParams()
         {
             Coordinate c = new(2, 1);
 
-            Assert.AreEqual(c.ToString(), "(2, 1)");
+            Assert.AreEqual("(2, 1)", c.ToString());
         }
     }
 }

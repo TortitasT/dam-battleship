@@ -8,7 +8,7 @@ public class Vector2Tests
     [TestMethod]
     public void Vector2Test()
     {
-        Coordinate coordinate = new Coordinate(1, 2);
+        Coordinate coordinate = new(1, 2);
 
         Assert.AreEqual(1, coordinate.X);
         Assert.AreEqual(2, coordinate.Y);
@@ -25,8 +25,8 @@ public class Vector2Tests
     [TestMethod]
     public void EqualsTest()
     {
-        Coordinate coordinateOne = new Coordinate(1, 2);
-        Coordinate coordinateTwo = new Coordinate(1, 2);
+        Coordinate coordinateOne = new(1, 2);
+        Coordinate coordinateTwo = new(1, 2);
 
         Assert.IsTrue(coordinateOne.Equals(coordinateTwo));
         Assert.IsTrue(coordinateOne.Equals(coordinateOne));
@@ -36,8 +36,8 @@ public class Vector2Tests
     [TestMethod]
     public void GetHashCodeTest()
     {
-        Coordinate coordinateOne = new Coordinate(1, 2);
-        Coordinate coordinateTwo = new Coordinate(1, 2);
+        Coordinate coordinateOne = new(1, 2);
+        Coordinate coordinateTwo = new(1, 2);
 
         Assert.AreEqual(coordinateOne.GetHashCode(), coordinateTwo.GetHashCode());
         Assert.AreEqual(coordinateOne.GetHashCode(), coordinateOne.GetHashCode());
@@ -47,7 +47,7 @@ public class Vector2Tests
     [TestMethod]
     public void ToStringTest()
     {
-        Coordinate coordinate = new Coordinate(1, 2);
+        Coordinate coordinate = new(1, 2);
 
         Assert.AreEqual("(1, 2)", coordinate.ToString());
     }
