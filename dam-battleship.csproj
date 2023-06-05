@@ -10,9 +10,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Remove="dam-battleshipTests\**"/>
-        <EmbeddedResource Remove="dam-battleshipTests\**"/>
-        <None Remove="dam-battleshipTests\**"/>
+        <Compile Remove="dam-battleshipTests\**" />
+        <EmbeddedResource Remove="dam-battleshipTests\**" />
+        <None Remove="dam-battleshipTests\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -28,6 +28,10 @@
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="models\io\" />
     </ItemGroup>
 
 </Project>
