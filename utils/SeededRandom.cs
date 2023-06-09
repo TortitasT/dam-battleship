@@ -1,4 +1,4 @@
-namespace dam_battleship.utils;
+namespace BattleShip.utils;
 
 public class SeededRandom
 {

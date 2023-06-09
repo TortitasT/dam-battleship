@@ -1,8 +1,8 @@
-﻿using dam_battleship.models;
+﻿using BattleShip.model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Reflection;
 
-namespace dam_battleshipTests.joamba.model
+namespace BattleShipTests.joamba.model
 {
     [TestClass]
     public class BoardTest

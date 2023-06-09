@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace dam_battleship.models.Tests;
+namespace BattleShip.models.Tests;
 
 [TestClass]
 [Obsolete("Ships matrix now work differently", true)]

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BattleShip.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dam_battleship.models.exceptions
+namespace BattleShip.model.exceptions
 {
     internal class NextToAnotherCraftException : CoordinateException
     {

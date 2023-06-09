@@ -1,6 +1,6 @@
-﻿using dam_battleship.models;
+﻿using BattleShip.model;
 
-namespace dam_battleship.utils;
+namespace BattleShip.utils;
 
 public class Utils
 {

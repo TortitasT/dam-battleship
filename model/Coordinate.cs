@@ -1,6 +1,6 @@
-using dam_battleship.utils;
+using BattleShip.utils;
 
-namespace dam_battleship.models;
+namespace BattleShip.model;
 
 public class Coordinate : ICloneable
 {
@@ -91,8 +91,8 @@ public class Coordinate : ICloneable
         {
             if (i == 4) continue;
 
-            var x = X + (i % 3) - 1;
-            var y = Y + (i / 3) - 1;
+            var x = X + i % 3 - 1;
+            var y = Y + i / 3 - 1;
 
             neighborhood.Add(new Coordinate(x, y));
         }

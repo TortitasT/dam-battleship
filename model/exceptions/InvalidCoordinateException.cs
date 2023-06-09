@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dam_battleship.models.exceptions
+namespace BattleShip.model.exceptions
 {
     internal class InvalidCoordinateException : CoordinateException
     {

@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace dam_battleship.models;
+namespace BattleShip.model;
 
 public class Ship : ICloneable
 {
@@ -121,7 +121,7 @@ public class Ship : ICloneable
 
     public int GetShapeIndex(Coordinate coordinate)
     {
-        return coordinate.X + (coordinate.Y * 5);
+        return coordinate.X + coordinate.Y * 5;
     }
 
     public void SetPosition(Coordinate coordinate)
@@ -184,7 +184,7 @@ public class Ship : ICloneable
 
         for (var i = 0; i < Matrix.Length; i++)
             if (Matrix[i] == 1)
-                positions.Add(new Coordinate(coordinate.X + (i % 5), coordinate.Y + (i / 5)));
+                positions.Add(new Coordinate(coordinate.X + i % 5, coordinate.Y + i / 5));
 
         return positions.ToArray();
     }

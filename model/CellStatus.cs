@@ -1,4 +1,4 @@
-﻿namespace dam_battleship.models
+﻿namespace BattleShip.model
 {
     public enum CellStatus
     {
