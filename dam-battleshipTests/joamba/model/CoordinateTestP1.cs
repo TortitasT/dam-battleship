@@ -1,7 +1,7 @@
-using dam_battleship.models;
+using BattleShip.model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace dam_battleshipTests.joamba.model
+namespace BattleShipTests.joamba.model
 {
     [TestClass]
     public class CoordinateTestP1

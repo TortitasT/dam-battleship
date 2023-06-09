@@ -1,4 +1,4 @@
-﻿namespace dam_battleship.models
+﻿namespace BattleShip.model
 {
     public class Consola
     {
@@ -21,12 +21,12 @@
 
         public void Write(string texto)
         {
-            this.textBox.AppendText(texto);
+            textBox.AppendText(texto);
         }
 
         public void WriteLine(string texto)
         {
-            this.textBox.AppendText(texto + Environment.NewLine);
+            textBox.AppendText(texto + Environment.NewLine);
         }
 
         public void WriteLine()
@@ -36,7 +36,7 @@
 
         public void Clear()
         {
-            this.textBox.Clear();
+            textBox.Clear();
         }
     }
 }

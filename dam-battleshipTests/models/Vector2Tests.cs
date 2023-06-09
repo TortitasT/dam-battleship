@@ -1,6 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BattleShip.model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace dam_battleship.models.Tests;
+namespace BattleShip.models.Tests;
 
 [TestClass]
 public class Vector2Tests

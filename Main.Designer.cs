@@ -1,4 +1,4 @@
-﻿namespace dam_battleship;
+﻿namespace BattleShip;
 
 partial class Main
 {

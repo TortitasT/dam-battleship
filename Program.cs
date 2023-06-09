@@ -1,8 +1,8 @@
-using dam_battleship.models;
-using dam_battleship.utils;
+using BattleShip.model;
+using BattleShip.utils;
 using System.Diagnostics;
 
-namespace dam_battleship;
+namespace BattleShip;
 
 internal static class Program
 {

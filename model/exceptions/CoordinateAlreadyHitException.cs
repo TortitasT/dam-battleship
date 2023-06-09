@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dam_battleship.models.exceptions
+namespace BattleShip.model.exceptions
 {
-    internal class CoordinateAlreadyHitException: CoordinateException
+    internal class CoordinateAlreadyHitException : CoordinateException
     {
         public CoordinateAlreadyHitException(Coordinate coordinate) : base(coordinate)
         {

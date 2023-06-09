@@ -1,6 +1,6 @@
-using dam_battleship.models;
+using BattleShip.model;
 
-namespace dam_battleship;
+namespace BattleShip;
 
 public partial class Main : Form
 {

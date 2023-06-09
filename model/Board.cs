@@ -1,7 +1,6 @@
-using System.Diagnostics;
 using System.Text;
 
-namespace dam_battleship.models;
+namespace BattleShip.model;
 
 public class Board
 {
@@ -144,10 +143,10 @@ public class Board
 
         var ship = GetShipAt(coordinate);
 
-        if (ship == null) 
+        if (ship == null)
             return CellStatus.WATER;
 
-        if (!ship.Hit(coordinate)) 
+        if (!ship.Hit(coordinate))
             return CellStatus.WATER;
 
         if (!ship.IsShotDown())
