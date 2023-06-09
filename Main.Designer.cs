@@ -30,58 +30,40 @@ partial class Main
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
         pictureBox1 = new PictureBox();
-        BtnExit = new Button();
-        BtnBegin = new Button();
+        textBox1 = new TextBox();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
         SuspendLayout();
         // 
         // pictureBox1
         // 
         pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-        pictureBox1.Location = new Point(12, 12);
+        pictureBox1.Location = new Point(14, 16);
+        pictureBox1.Margin = new Padding(3, 4, 3, 4);
         pictureBox1.Name = "pictureBox1";
-        pictureBox1.Size = new Size(500, 150);
-        pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+        pictureBox1.Size = new Size(573, 150);
+        pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
         pictureBox1.TabIndex = 0;
         pictureBox1.TabStop = false;
         // 
-        // BtnExit
+        // textBox1
         // 
-        BtnExit.Anchor = AnchorStyles.None;
-        BtnExit.FlatAppearance.BorderSize = 0;
-        BtnExit.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-        BtnExit.Location = new Point(200, 225);
-        BtnExit.Name = "BtnExit";
-        BtnExit.Size = new Size(125, 35);
-        BtnExit.TabIndex = 2;
-        BtnExit.Text = "Exit";
-        BtnExit.UseVisualStyleBackColor = true;
-        BtnExit.Click += BtnExit_Click;
-        // 
-        // BtnBegin
-        // 
-        BtnBegin.Anchor = AnchorStyles.None;
-        BtnBegin.FlatAppearance.BorderSize = 0;
-        BtnBegin.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-        BtnBegin.Location = new Point(200, 175);
-        BtnBegin.Name = "BtnBegin";
-        BtnBegin.Size = new Size(125, 35);
-        BtnBegin.TabIndex = 1;
-        BtnBegin.Text = "New game";
-        BtnBegin.UseVisualStyleBackColor = true;
-        BtnBegin.Click += BtnBegin_Click;
+        textBox1.Location = new Point(14, 173);
+        textBox1.Multiline = true;
+        textBox1.Name = "textBox1";
+        textBox1.Size = new Size(573, 196);
+        textBox1.TabIndex = 1;
         // 
         // Main
         // 
-        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(29, 29, 29);
-        ClientSize = new Size(524, 286);
-        Controls.Add(BtnExit);
-        Controls.Add(BtnBegin);
+        ClientSize = new Size(599, 381);
+        Controls.Add(textBox1);
         Controls.Add(pictureBox1);
         ForeColor = Color.FromArgb(69, 90, 99);
         FormBorderStyle = FormBorderStyle.FixedSingle;
+        Margin = new Padding(3, 4, 3, 4);
         MaximizeBox = false;
         Name = "Main";
         StartPosition = FormStartPosition.CenterScreen;
@@ -94,6 +76,5 @@ partial class Main
     #endregion
 
     private PictureBox pictureBox1;
-    private Button BtnExit;
-    private Button BtnBegin;
+    private TextBox textBox1;
 }
